@@ -114,7 +114,7 @@ const Sidebar = () => {
               Pages
             </Typography>
             <Item
-              title="Scouting Form"
+              title="Approval form"
               to="/scouting-form"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}

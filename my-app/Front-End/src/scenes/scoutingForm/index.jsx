@@ -62,87 +62,85 @@ const Form = () => {
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "Date"
+                                label = "Credit Score"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.date}
                                 name = "date"
                                 error = {!!touched.date && !!errors.date}
                                 helperText = {touched.date && errors.date}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "Scout"
+                                label = "Gross Monthly Income"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.scout}
                                 name = "scout"
                                 error = {!!touched.scout && !!errors.scout}
                                 helperText = {touched.scout && errors.scout}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "DXID"
+                                label = "Appraised Value of Home"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.dxId}
                                 name = "dxId"
                                 error = {!!touched.dxId && !!errors.dxId}
                                 helperText = {touched.dxId && errors.dxId}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "Player"
+                                label = "Credit Card Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.player}
                                 name = "player"
                                 error = {!!touched.player && !!errors.player}
                                 helperText = {touched.player && errors.player}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "Event"
+                                label = "Car Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.event}
                                 name = "event"
                                 error = {!!touched.event && !!errors.event}
                                 helperText = {touched.event && errors.event}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
-                                label = "Team"
+                                label = "Student Loan Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.team}
                                 name = "team"
                                 error = {!!touched.team && !!errors.team}
                                 helperText = {touched.team && errors.team}
-                                sx = {{ gridColumn: "span 2"}}
+                                sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
                                 fullWidth
-                                multiline = {true}
-                                rows = {5}
                                 variant = "filled"
                                 type = "text"
-                                label = "Report"
+                                label = "Down Payment"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.report}
