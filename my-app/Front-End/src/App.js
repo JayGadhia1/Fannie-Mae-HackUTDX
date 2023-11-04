@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import Teampage from "./scenes/teampage";
+import Teampage from "./scenes/results";
 import ScoutForm from "./scenes/scoutingForm";
 
 

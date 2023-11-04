@@ -4,11 +4,10 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import EmailIcon from '@mui/icons-material/Email';
+
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -86,7 +85,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/logo.png`}
+                  src={`../../assets/FannieMae.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -97,10 +96,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                Mavericks
+                Fannie Mae
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Created by Ishaan Virani
+                  
                 </Typography>
               </Box>
             </Box>
@@ -109,28 +108,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Typography
               variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
-              Data
-            </Typography>
-            <Item
-              title="Team Statistics"
-              to="/"
-              icon={<SportsBasketballIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Player Information"
-              to="/player-info"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
+              color={colors.grey[100]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Pages
@@ -143,9 +121,9 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Schedule"
-              to="/schedule"
-              icon={<CalendarTodayOutlinedIcon />}
+              title="Results"
+              to="/results"
+              icon={<EmailIcon />}
               selected={selected}
               setSelected={setSelected}
             />

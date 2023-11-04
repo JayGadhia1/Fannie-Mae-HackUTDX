@@ -1,5 +1,6 @@
 import { Box, Button, TextField } from '@mui/material';
 import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
@@ -29,7 +30,7 @@ const userSchema = yup.object().shape({
 
 const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)")
-
+    const navigate = useNavigate();
     const handleFormSubmit = (values) => {
         //values.preventDefault();
         values.id = values.date + "_Sample Report";
@@ -42,12 +43,13 @@ const Form = () => {
         }).catch((err)=>{
            console.log(err.message) 
         })
+        navigate("/results");
         //updateScoutForm(values);
     }
 
     return(
         <Box m = "20px">
-            <Header title = "SCOUTING FORM" subtitle = "Submit a New Scouting Record"/>
+            <Header title = "Wanna Purchase a Home?" subtitle = "Submit information accordingly for each section "/>
             <Formik
                 onSubmit = {handleFormSubmit}
                 initialValues = {initialValues}
@@ -152,7 +154,7 @@ const Form = () => {
                         </Box>
                         <Box display = "flex" justifyContent = "end" mt = "20px">
                             <Button type = "submit" color = "secondary" variant = "contained">
-                                Add Scouting Report
+                                Submit Report
                             </Button>
                         </Box>
                     </form>
