@@ -5,8 +5,7 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Teampage from "./scenes/teampage";
 import ScoutForm from "./scenes/scoutingForm";
-import Schedule from "./scenes/calendar";
-import PlayerBio from "./scenes/playerBio";
+
 
 
 function App() {
@@ -23,8 +22,6 @@ function App() {
             <Routes>
               <Route path = "/" element = {<Teampage/>}></Route>
               <Route path = "/scouting-form" element = {<ScoutForm/>}></Route>
-              <Route path = "/schedule" element = {<Schedule/>}></Route> 
-              <Route path = "/player-info" element = {<PlayerBio/>}></Route>
             </Routes>
           </main>
         </div>
