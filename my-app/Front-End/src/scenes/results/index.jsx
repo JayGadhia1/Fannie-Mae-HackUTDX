@@ -8,13 +8,9 @@ import { PieChart, Pie, Cell, Legend, Tooltip, Label } from 'recharts';
 const Results = () => {
   // Define state to hold the parsed form data for the pie chart
   const [chartData, setChartData] = useState([]);
-  const [airesponse, setAiResponse] = useState('');
   const [resultObject, setResultObject] = useState({accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""});
 
   useEffect(() => {
-    const data = resultObject.ai_response;
-    setAiResponse(data);
-    console.log(airesponse);
     // Retrieve and parse the stored form data when the component mounts
     const storedFormData = localStorage.getItem('formData');
     if (storedFormData) {
@@ -42,9 +38,10 @@ const Results = () => {
             return response.json(); // Parse the response as JSON
         })
         .then((data) => {
-            // Handle the data received from the server
-            setResultObject(data);
-            console.log(resultObject);
+            if(resultObject.length === 0) {
+              // Handle the data received from the server
+              setResultObject(data);
+            }
         })
         .catch((error) => {
             // Handle any errors that occur during the request
@@ -57,9 +54,6 @@ const Results = () => {
       {chartData && chartData.length > 0 ? (
         <>
           <Header title="Financial Overview" subtitle="See your financial commitments breakdown" />
-          <p  > {airesponse}
-
-          </p> 
           <PieChart width={800} height={400}>
             <Pie
               data={chartData}
@@ -71,6 +65,9 @@ const Results = () => {
               paddingAngle={5}
               dataKey="value"
             >
+            <h5  > {resultObject.ai_response}
+
+            </h5> 
               {chartData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
