@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from "@mui/material";
+import { Box, Typography} from "@mui/material";
 import Header from "../../components/Header";
 import { PieChart, Pie, Cell, Legend, Tooltip, Label } from 'recharts';
 
-let resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""};
+// let resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""};
 
 const Results = () => {
   // Define state to hold the parsed form data for the pie chart
   const [chartData, setChartData] = useState([]);
+  const [airesponse, setAiResponse] = useState('');
+  const [resultObject, setResultObject] = useState({accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""});
 
   useEffect(() => {
+    const data = resultObject.ai_response;
+    setAiResponse(data);
+    console.log(airesponse);
     // Retrieve and parse the stored form data when the component mounts
     const storedFormData = localStorage.getItem('formData');
     if (storedFormData) {
@@ -38,7 +43,7 @@ const Results = () => {
         })
         .then((data) => {
             // Handle the data received from the server
-            resultObject = data;
+            setResultObject(data);
             console.log(resultObject);
         })
         .catch((error) => {
@@ -48,10 +53,13 @@ const Results = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#a94e77'];
 
   return (
-    <Box m="20px">
+    <Box m="100px">
       {chartData && chartData.length > 0 ? (
         <>
           <Header title="Financial Overview" subtitle="See your financial commitments breakdown" />
+          <p  > {airesponse}
+
+          </p> 
           <PieChart width={800} height={400}>
             <Pie
               data={chartData}
@@ -84,6 +92,7 @@ const Results = () => {
       ) : (
         <Header title="No Data" subtitle="Please fill and submit the form to see the results." />
       )}
+
     </Box>
   );
 };
