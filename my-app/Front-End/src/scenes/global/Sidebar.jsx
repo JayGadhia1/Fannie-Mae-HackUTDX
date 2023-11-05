@@ -86,7 +86,7 @@ const Sidebar = () => {
                       alt="profile-user"
                       width="100px"
                       height="100px"
-                      src={`../../assets/FannieMae.png`}
+                      src={`../../assets/HOUSE.jpeg`}
                       style={{ cursor: "pointer", borderRadius: "50%" }}
                     />
                   </a>
@@ -100,7 +100,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                Fannie Mae
+                FNM
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   
