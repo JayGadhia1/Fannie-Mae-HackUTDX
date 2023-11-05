@@ -15,6 +15,7 @@ const initialValues = {
     carPayment:"",
     downPayment:"",
     slp:"",
+    mortgage:""
 };
 
 const userSchema = yup.object().shape({
@@ -25,6 +26,7 @@ const userSchema = yup.object().shape({
     carPayment:yup.string().required("required"),
     downPayment:yup.string().required("required"),
     slp:yup.string().required("required"),
+    mortgage:yup.string().required("required")
 });
 
 
@@ -145,6 +147,19 @@ const Form = () => {
                                 name = "downPayment"
                                 error = {!!touched.downPayment && !!errors.downPayment}
                                 helperText = {touched.downPayment && errors.downPayment}
+                                sx = {{ gridColumn: "span 4"}}
+                            />
+                            <TextField
+                                fullWidth
+                                variant = "filled"
+                                type = "text"
+                                label = "Estimated Monthly Mortgage"
+                                onBlur = {handleBlur}
+                                onChange = {handleChange}
+                                value = {values.mortgage}
+                                name = "mortgage"
+                                error = {!!touched.mortgage && !!errors.mortgage}
+                                helperText = {touched.mortgage && errors.mortgage}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                         </Box>
