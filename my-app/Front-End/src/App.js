@@ -3,7 +3,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import ScoutForm from "./scenes/scoutingForm";
+import InfoForm from "./scenes/infoForm";
+import Results from "./scenes/results";
 
 
 
@@ -19,7 +20,8 @@ function App() {
           <main class = "content">
             <Topbar />
             <Routes>
-              <Route path = "/scouting-form" element = {<ScoutForm/>}></Route>
+              <Route path = "/" element = {<InfoForm/>}></Route>
+              <Route path = "/results" element = {<Results/>}></Route>
             </Routes>
           </main>
         </div>
