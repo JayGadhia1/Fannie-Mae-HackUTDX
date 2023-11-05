@@ -49,7 +49,7 @@ const Form = () => {
 
     return(
         <Box m = "20px">
-            <Header title = "Wanna Purchase a Home?" subtitle = "Submit information accordingly for each section "/>
+            <Header title = "Wanna Purchase a Home?"/>
             <Formik
                 onSubmit = {handleFormSubmit}
                 initialValues = {initialValues}
