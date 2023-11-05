@@ -150,7 +150,7 @@ const Form = () => {
                         </Box>
                         <Box display = "flex" justifyContent = "end" mt = "20px">
                             <Button type = "submit" color = "secondary" variant = "contained">
-                                Submit downPayment
+                                Submit form
                             </Button>
                         </Box>
                     </form>
