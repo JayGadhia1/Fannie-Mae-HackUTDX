@@ -44,7 +44,7 @@ const Results = () => {
         .catch((error) => {
             // Handle any errors that occur during the request
             console.error(error);
-
+        });
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#a94e77'];
 
   return (
@@ -86,7 +86,7 @@ const Results = () => {
       )}
     </Box>
   );
-});
-}
+};
+
 
 export default Results;
