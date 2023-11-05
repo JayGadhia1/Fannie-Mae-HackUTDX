@@ -4,27 +4,27 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
-//import { updateScoutForm } from "../../addScoutingFormData"
+//import { upcreditgmiForm } from "../../addgmiingFormData"
 
 const initialValues = {
     id:"",
-    date:"",
-    scout:"",
-    dxId:"",
-    player:"",
-    event:"",
-    report:"",
-    team:"",
+    credit:"",
+    gmi:"",
+    av:"",
+    credPayment:"",
+    carPayment:"",
+    downPayment:"",
+    slp:"",
 };
 
 const userSchema = yup.object().shape({
-    date: yup.string().required("required"),
-    scout:yup.string().required("required"),
-    dxId:yup.string().required("required"),
-    player:yup.string().required("required"),
-    event:yup.string().required("required"),
-    report:yup.string().required("required"),
-    team:yup.string().required("required"),
+    credit: yup.string().required("required"),
+    gmi:yup.string().required("required"),
+    av:yup.string().required("required"),
+    credPayment:yup.string().required("required"),
+    carPayment:yup.string().required("required"),
+    downPayment:yup.string().required("required"),
+    slp:yup.string().required("required"),
 });
 
 
@@ -32,9 +32,7 @@ const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)")
     const navigate = useNavigate();
     const handleFormSubmit = (values) => {
-        //values.preventDefault();
-        values.id = values.date + "_Sample Report";
-        fetch("https://olivine-whispering-ear.glitch.me/scoutingReports",{
+        fetch("https://olivine-whispering-ear.glitch.me/gmiingdownPayments",{
             method: "POST",
             headers:{"content-type":"application/json"},
             body: JSON.stringify(values)
@@ -44,7 +42,7 @@ const Form = () => {
            console.log(err.message) 
         })
         navigate("/results");
-        //updateScoutForm(values);
+        //upcreditgmiForm(values);
     }
 
     return(
@@ -65,10 +63,10 @@ const Form = () => {
                                 label = "Credit Score"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.date}
-                                name = "date"
-                                error = {!!touched.date && !!errors.date}
-                                helperText = {touched.date && errors.date}
+                                value = {values.credit}
+                                name = "credit"
+                                error = {!!touched.credit && !!errors.credit}
+                                helperText = {touched.credit && errors.credit}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -78,10 +76,10 @@ const Form = () => {
                                 label = "Gross Monthly Income"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.scout}
-                                name = "scout"
-                                error = {!!touched.scout && !!errors.scout}
-                                helperText = {touched.scout && errors.scout}
+                                value = {values.gmi}
+                                name = "gmi"
+                                error = {!!touched.gmi && !!errors.gmi}
+                                helperText = {touched.gmi && errors.gmi}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -91,10 +89,10 @@ const Form = () => {
                                 label = "Appraised Value of Home"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.dxId}
-                                name = "dxId"
-                                error = {!!touched.dxId && !!errors.dxId}
-                                helperText = {touched.dxId && errors.dxId}
+                                value = {values.av}
+                                name = "av"
+                                error = {!!touched.av && !!errors.av}
+                                helperText = {touched.av && errors.av}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -104,10 +102,10 @@ const Form = () => {
                                 label = "Credit Card Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.player}
-                                name = "player"
-                                error = {!!touched.player && !!errors.player}
-                                helperText = {touched.player && errors.player}
+                                value = {values.credPayment}
+                                name = "credPayment"
+                                error = {!!touched.credPayment && !!errors.credPayment}
+                                helperText = {touched.credPayment && errors.credPayment}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -117,10 +115,10 @@ const Form = () => {
                                 label = "Car Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.event}
-                                name = "event"
-                                error = {!!touched.event && !!errors.event}
-                                helperText = {touched.event && errors.event}
+                                value = {values.carPayment}
+                                name = "carPayment"
+                                error = {!!touched.carPayment && !!errors.carPayment}
+                                helperText = {touched.carPayment && errors.carPayment}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -130,10 +128,10 @@ const Form = () => {
                                 label = "Student Loan Payment (monthly)"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.team}
-                                name = "team"
-                                error = {!!touched.team && !!errors.team}
-                                helperText = {touched.team && errors.team}
+                                value = {values.slp}
+                                name = "slp"
+                                error = {!!touched.slp && !!errors.slp}
+                                helperText = {touched.slp && errors.slp}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                             <TextField
@@ -143,16 +141,16 @@ const Form = () => {
                                 label = "Down Payment"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
-                                value = {values.report}
-                                name = "report"
-                                error = {!!touched.report && !!errors.report}
-                                helperText = {touched.report && errors.report}
+                                value = {values.downPayment}
+                                name = "downPayment"
+                                error = {!!touched.downPayment && !!errors.downPayment}
+                                helperText = {touched.downPayment && errors.downPayment}
                                 sx = {{ gridColumn: "span 4"}}
                             />
                         </Box>
                         <Box display = "flex" justifyContent = "end" mt = "20px">
                             <Button type = "submit" color = "secondary" variant = "contained">
-                                Submit Report
+                                Submit downPayment
                             </Button>
                         </Box>
                     </form>
