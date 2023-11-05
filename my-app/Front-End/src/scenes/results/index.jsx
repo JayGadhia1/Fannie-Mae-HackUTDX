@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from "@mui/material";
 import Header from "../../components/Header";
-import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, Legend, Tooltip, Label } from 'recharts';
+
+let resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""};
 
 const Results = () => {
   // Define state to hold the parsed form data for the pie chart
@@ -22,6 +24,26 @@ const Results = () => {
       setChartData(preparedData);
     }
   }, []);
+  fetch("http://localhost:3001/api/get-data", {
+        method: "GET", 
+        headers: {
+            "Content-Type": "application/json", // You can set headers if needed
+        },
+        })
+        .then((response) => {
+            if (!response.ok) {
+            throw new Error("Network response was not ok");
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then((data) => {
+            // Handle the data received from the server
+            resultObject = data;
+            console.log(resultObject);
+        })
+        .catch((error) => {
+            // Handle any errors that occur during the request
+            console.error(error);
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#a94e77'];
 
@@ -35,8 +57,8 @@ const Results = () => {
               data={chartData}
               cx={120}
               cy={200}
-              innerRadius={60}
-              outerRadius={80}
+              innerRadius={100}
+              outerRadius={140}
               fill="#8884d8"
               paddingAngle={5}
               dataKey="value"
@@ -44,9 +66,19 @@ const Results = () => {
               {chartData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
+              <Label
+                value="Total Debt"
+                position="center"
+                style={{
+                    fill: '#fff',
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    textAnchor: 'middle',
+                }}
+                />
             </Pie>
             <Tooltip />
-            <Legend />
+            <Legend layout="vertical" align="left" verticalAlign="bottom" />
           </PieChart>
         </>
       ) : (
@@ -54,6 +86,7 @@ const Results = () => {
       )}
     </Box>
   );
-};
+});
+}
 
 export default Results;
