@@ -31,32 +31,6 @@ const Results = () => {
         .catch((error) => {
             // Handle any errors that occur during the request
             console.error(error);
-        });
-    
-    // if(resultObject.accepted != "Accepted"){
-    //     fetch("http://localhost:3001/api/AI-Response", {
-    //         method: "GET", 
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         })
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //             throw new Error("Network response was not ok");
-    //             }
-    //             return response.json(); // Parse the response as JSON
-    //         })
-    //         .then((data) => {
-    //             // Handle the data received from the server
-    //             resultObject.ai_response = data;
-    //             console.log(resultObject);
-
-    //         })
-    //         .catch((error) => {
-    //             // Handle any errors that occur during the request
-    //             console.error(error);
-    //         });
-    // }
-        
+        });        
 }
 export default Results;
