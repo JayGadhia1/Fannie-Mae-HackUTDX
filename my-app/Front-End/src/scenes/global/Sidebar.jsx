@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
@@ -80,13 +80,18 @@ const Sidebar = () => {
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
-                <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={`../../assets/FannieMae.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
+                <Button variant="outlined">
+                  <a href = "https://www.fanniemae.com/" target = "_blank" rel = "noopener noreferrer" >
+                    <img
+                      alt="profile-user"
+                      width="100px"
+                      height="100px"
+                      src={`../../assets/FannieMae.png`}
+                      style={{ cursor: "pointer", borderRadius: "50%" }}
+                    />
+                  </a>
+                </Button>
+                
               </Box>
               <Box textAlign="center">
                 <Typography
