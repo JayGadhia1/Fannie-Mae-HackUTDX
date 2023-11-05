@@ -6,7 +6,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
 const initialValues = {
-    id:"",
     credit:"",
     gmi:"",
     av:"",
@@ -26,7 +25,11 @@ const userSchema = yup.object().shape({
     carPayment:yup.string().required("required"),
     downPayment:yup.string().required("required"),
     slp:yup.string().required("required"),
+<<<<<<< Updated upstream
     mortgage:yup.string().required("required")
+=======
+    mortgage:yup.string().required("required"),
+>>>>>>> Stashed changes
 });
 
 
@@ -167,13 +170,22 @@ const Form = () => {
                                 fullWidth
                                 variant = "filled"
                                 type = "text"
+<<<<<<< Updated upstream
                                 label = "Estimated Monthly Mortgage"
+=======
+                                label = "Mortgage"
+>>>>>>> Stashed changes
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.mortgage}
                                 name = "mortgage"
+<<<<<<< Updated upstream
                                 error = {!!touched.mortgage && !!errors.mortgage}
                                 helperText = {touched.mortgage && errors.mortgage}
+=======
+                                error = {!!touched.downPayment && !!errors.downPayment}
+                                helperText = {touched.downPayment && errors.downPayment}
+>>>>>>> Stashed changes
                                 sx = {{ gridColumn: "span 4"}}
                             />
                         </Box>

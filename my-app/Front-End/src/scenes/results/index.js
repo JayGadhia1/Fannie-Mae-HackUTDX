@@ -6,82 +6,58 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 //import { updateScoutForm } from "../../addScoutingFormData"
 
-const initialValues = {
-    date:"",
-    scout:"",
-    dxId:"",
-    player:"",
-    event:"",
-    report:"",
-    team:"",
-};
 
-const userSchema = yup.object().shape({
-    date: yup.string().required("required"),
-    scout:yup.string().required("required"),
-    dxId:yup.string().required("required"),
-    player:yup.string().required("required"),
-    event:yup.string().required("required"),
-    report:yup.string().required("required"),
-    team:yup.string().required("required"),
-});
+let resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, accepted: ""};
 
-
-const Form = () => {
+const Results = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)")
-    const navigate = useNavigate();
-    const handleFormSubmit = (values) => {
-        try {
-            fetch("http://localhost:3001/api/your-backend-endpoint", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(values)
+    fetch("http://localhost:3001/api/get-data", {
+        method: "GET", 
+        headers: {
+            "Content-Type": "application/json", // You can set headers if needed
+        },
+        })
+        .then((response) => {
+            if (!response.ok) {
+            throw new Error("Network response was not ok");
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then((data) => {
+            // Handle the data received from the server
+            resultObject = data;
+            console.log(resultObject);
+        })
+        .catch((error) => {
+            // Handle any errors that occur during the request
+            console.error(error);
+        });
+    
+    if(resultObject.accepted != "Accepted"){
+        fetch("http://localhost:3001/api/AI-Response", {
+            method: "GET", 
+            headers: {
+                "Content-Type": "application/json",
+            },
+            req: "What can I do to improve my Loan-to-Value ratio, Debt-to-income ratio, my Front-end-debt-to-income ratio, and my credit score?"
             })
-            .then((res) => {
-                if (res.ok) {
-                    // Successful response handling
-                    return res.json();
-                } else {
-                    // Handle non-successful responses here
-                    throw new Error('Network response was not ok');
+            .then((response) => {
+                if (!response.ok) {
+                throw new Error("Network response was not ok");
                 }
+                return response.json(); // Parse the response as JSON
             })
             .then((data) => {
                 // Handle the data received from the server
-                alert('Saved Successfully');
-                navigate("/results");
+                resultObject.aiResponse = data;
+                console.log(resultObject);
+
             })
-            .catch((err) => {
-                // Handle errors from the fetch or response processing
-                console.log(err.message);
+            .catch((error) => {
+                // Handle any errors that occur during the request
+                console.error(error);
             });
-        } catch (error) {
-            // Handle any other errors that might occur in the function
-            console.log(error);
-        }
     }
-    
-
-    return(
-        <Box m = "20px">
-            <Header title = "Wanna Purchase a Home?" subtitle = "Submit information accordingly for each section "/>
-            <Formik
-                onSubmit = {handleFormSubmit}
-                initialValues = {initialValues}
-                validationSchema={userSchema}
-            >
-                {({values, errors, touched, handleBlur, handleChange, handleSubmit}) =>(
-                    <form onSubmit = {handleSubmit}>
-                        <Box display = "grid" gap = "30px" gridTemplateColumns = "repeat(4, minmax(0, 1fr))" sx = {{"& > div": {gridColumn : isNonMobile ? undefined : "span 4"},}}>
-                            
-                        </Box>
-                        <Box display = "flex" justifyContent = "end" mt = "20px">
-                        </Box>
-                    </form>
-                )}
-            </Formik>
-        </Box>
-    )
+        
 }
-
-export default Form;
+export default Results;
