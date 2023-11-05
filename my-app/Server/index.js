@@ -7,9 +7,6 @@ app.use(cors()); // This allows all origins for testing. In production, you shou
 
 app.use(bodyParser.json());
 
-
-
-
 const {
     TextServiceClient
 } = require("@google-ai/generativelanguage");
@@ -23,37 +20,30 @@ const client = new TextServiceClient({
     authClient: new GoogleAuth().fromAPIKey(API_KEY),
 });
 
+app.get('/api/AI-Response', (req, res) => {
+    client.generateText({
+        model: 'models/text-bison-001',
+        temperature: 0.7,
+        candidateCount: 1,
+        top_k: 40,
+        top_p: 0.95,
+        max_output_tokens: 1024,
+        stop_sequences: [],
+        prompt: {
+            text: req.query.question,
+        },
+    }).then(result => {
+        result.forEach(function(d1) {
+            if (d1 != null) {
+                d1.candidates.forEach(function(d2) {
+                    res.send(d2.output);
+                })
+            }
+        })
+    });
+})
 
-
-const prompt = "What can I do to improve my Loan-to-Value ratio, Debt-to-income ratio, my Front-end-debt-to-income ratio, and my credit score?";
-
-
-
-
-
-// app.get('/api/AI-Response', (req, res) => {
-//     client.generateText({
-//         model: 'models/text-bison-001',
-//         temperature: 0.7,
-//         candidateCount: 1,
-//         prompt: {
-//             text: prompt,
-//         },
-//     }).then((result) => {
-//        console.log(result[0].candidates[0].output);
-//     });
-//     res.json
-// })
-
-
-
-
-const resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0, ai_response: ""};
-
-
-
-
-
+const resultObject = {accepted: "", creditScore: 0, dti: 0, ltv: 0, fedti: 0};
 
 // Define an endpoint for receiving POST requests
 app.post('/api/your-backend-endpoint', (req, res) => {
@@ -86,25 +76,9 @@ app.post('/api/your-backend-endpoint', (req, res) => {
         resultObject.accepted = "Accepted";
     }
 
-    if (resultObject.accepted != "Accepted")
-        client.generateText({
-            model: 'models/text-bison-001',
-            temperature: 0.7,
-            candidateCount: 1,
-            prompt: {
-                text: prompt,
-            },
-        }).then((result) => {
-            console.log(result[0].candidates[0].output.toString());
-            resultObject.ai_response = (result[0].candidates[0].output.toString());
-        });
-
     // Send a response back to the client
     res.json({ message: 'Data received and processed successfully' });
 });
-
-
-
 
 app.get('/api/get-data', (req, res) => {
     // You can perform any data retrieval or processing here
@@ -113,7 +87,6 @@ app.get('/api/get-data', (req, res) => {
     // Send a JSON response
     res.json(responseData);
 });
-
 
 
 

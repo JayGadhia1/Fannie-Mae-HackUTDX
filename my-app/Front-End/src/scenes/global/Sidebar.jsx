@@ -87,7 +87,7 @@ const Sidebar = () => {
                       width="100px"
                       height="100px"
                       src={`../../assets/FannieMae.png`}
-                      style={{ cursor: "pointer", borderRadius: "50%" }}
+                      style={{ cursor: "po inter", borderRadius: "50%" }}
                     />
                   </a>
                 </Button>
