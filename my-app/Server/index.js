@@ -21,7 +21,7 @@ app.post('/api/your-backend-endpoint', (req, res) => {
 });
 
 // Start the server
-const port = 8080; // You can choose any available port
+const port = 3001; // You can choose any available port
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
