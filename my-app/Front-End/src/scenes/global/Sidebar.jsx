@@ -93,7 +93,7 @@ const Sidebar = () => {
                 </Button>
                 
               </Box>
-              <Box textAlign="center">
+              <Box textAlign="center" >
                 <Typography
                   variant="h2"
                   color={colors.grey[100]}

@@ -6,7 +6,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 
 const initialValues = {
-    id:"",
     credit:"",
     gmi:"",
     av:"",
@@ -94,19 +93,6 @@ const Form = () => {
                                 onChange = {handleChange}
                                 value = {values.av}
                                 name = "av"
-                                error = {!!touched.av && !!errors.av}
-                                helperText = {touched.av && errors.av}
-                                sx = {{ gridColumn: "span 4"}}
-                            />
-                            <TextField
-                                fullWidth
-                                variant = "filled"
-                                type = "text"
-                                label = "Est. Monthly Mortgage Payment"
-                                onBlur = {handleBlur}
-                                onChange = {handleChange}
-                                value = {values.av}
-                                name = "EMMP"
                                 error = {!!touched.av && !!errors.av}
                                 helperText = {touched.av && errors.av}
                                 sx = {{ gridColumn: "span 4"}}
