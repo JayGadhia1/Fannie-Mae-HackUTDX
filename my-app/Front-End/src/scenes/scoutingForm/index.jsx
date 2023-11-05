@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
-//import { updateScoutForm } from "../../addScoutingFormData"
 
 const initialValues = {
     id:"",
@@ -89,6 +88,19 @@ const Form = () => {
                                 variant = "filled"
                                 type = "text"
                                 label = "Appraised Value of Home"
+                                onBlur = {handleBlur}
+                                onChange = {handleChange}
+                                value = {values.dxId}
+                                name = "dxId"
+                                error = {!!touched.dxId && !!errors.dxId}
+                                helperText = {touched.dxId && errors.dxId}
+                                sx = {{ gridColumn: "span 4"}}
+                            />
+                            <TextField
+                                fullWidth
+                                variant = "filled"
+                                type = "text"
+                                label = "Est. Monthly Mortgage Payment"
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.dxId}

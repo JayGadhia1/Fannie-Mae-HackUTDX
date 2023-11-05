@@ -82,7 +82,7 @@ const Sidebar = () => {
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
-                  alt="profile-user"
+                  alt="Fannie Mae"
                   width="100px"
                   height="100px"
                   src={`../../assets/FannieMae.png`}
