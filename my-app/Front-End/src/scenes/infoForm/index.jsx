@@ -38,13 +38,17 @@ const Form = () => {
             method: "POST",
             headers:{"content-type":"application/json"},
             body: JSON.stringify(values)
-        }).then((res)=>{
+        }).then((res) => {
+            // Store the values in local storage before navigating
+            localStorage.setItem('formData', JSON.stringify(values));
+            
             alert('Saved Successfully')
             navigate("/results")
-        }).catch((err)=>{
+        }).catch((err) => {
            console.log(err.message) 
         })
     }
+    
     
 
     return(
@@ -105,7 +109,6 @@ const Form = () => {
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.credPayment}
-                                credPayment = {values.credPayment}
                                 name = "credPayment"
                                 error = {!!touched.credPayment && !!errors.credPayment}
                                 helperText = {touched.credPayment && errors.credPayment}
@@ -119,7 +122,6 @@ const Form = () => {
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.carPayment}
-                                carPayment = {values.carPayment}
                                 name = "carPayment"
                                 error = {!!touched.carPayment && !!errors.carPayment}
                                 helperText = {touched.carPayment && errors.carPayment}
@@ -133,7 +135,6 @@ const Form = () => {
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.slp}
-                                slp = {values.slp}
                                 name = "slp"
                                 error = {!!touched.slp && !!errors.slp}
                                 helperText = {touched.slp && errors.slp}
@@ -147,7 +148,6 @@ const Form = () => {
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.downPayment}
-                                downPayment = {values.downPayment}
                                 name = "downPayment"
                                 error = {!!touched.downPayment && !!errors.downPayment}
                                 helperText = {touched.downPayment && errors.downPayment}
@@ -161,7 +161,6 @@ const Form = () => {
                                 onBlur = {handleBlur}
                                 onChange = {handleChange}
                                 value = {values.mortgage}
-                                mortgage = {values.mortgage}
                                 name = "mortgage"
                                 error = {!!touched.mortgage && !!errors.mortgage}
                                 helperText = {touched.mortgage && errors.mortgage}
